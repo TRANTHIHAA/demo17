@@ -11,6 +11,7 @@ public interface IGeneral<E> {
     Optional<E> findById(Long id);
 
     E save(E t);
+    Page<E> findAllByNameContaining(Pageable pageable, String name);
 
     void removeById(Long id);
 }

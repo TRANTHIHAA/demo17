@@ -34,4 +34,8 @@ public class FoodService implements IFoodService {
     public void removeById(Long id) {
         foodRepository.deleteById(id);
     }
+    @Override
+    public Page<Foods> findAllByNameContaining(Pageable pageable, String name) {
+        return foodRepository.findAllByNameContaining(pageable,"%" + name + "%");
+    }
 }
