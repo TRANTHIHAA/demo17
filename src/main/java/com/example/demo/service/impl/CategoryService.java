@@ -31,6 +31,11 @@ public class CategoryService implements ICategoryService {
     }
 
     @Override
+    public Page<Category> findAllByNameContaining(Pageable pageable, String name) {
+        return categoryRepository.findAllByNameContaining(pageable,"%" + name + "%");
+    }
+
+    @Override
     public void removeById(Long id) {
             categoryRepository.deleteById(id);
     }

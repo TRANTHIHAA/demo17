@@ -31,6 +31,12 @@ public class RoleService implements IRoleService {
     }
 
     @Override
+    public Page<Roles> findAllByNameContaining(Pageable pageable, String name) {
+        return null;
+//        return rolesRepository.findAllByNameContaining(pageable,"%" + name + "%");
+    }
+
+    @Override
     public void removeById(Long id) {
         rolesRepository.deleteById(id);
     }

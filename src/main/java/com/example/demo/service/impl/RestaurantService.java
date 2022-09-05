@@ -31,6 +31,11 @@ public class RestaurantService implements IRestaurantService {
     }
 
     @Override
+    public Page<Restaurants> findAllByNameContaining(Pageable pageable, String name) {
+        return restaurantRepository.findAllByNameContaining(pageable,"%" + name + "%");
+    }
+
+    @Override
     public void removeById(Long id) {
         restaurantRepository.deleteById(id);
 

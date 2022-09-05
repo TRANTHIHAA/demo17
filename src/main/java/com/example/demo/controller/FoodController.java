@@ -21,7 +21,7 @@ import java.util.Optional;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("food")
+@RequestMapping("api/food")
 public class FoodController {
     @Autowired
     private IFoodService iFoodService;

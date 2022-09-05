@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("roles")
+@RequestMapping("api/roles")
 public class RolesController {
     @Autowired
     private IRoleService iRoleService;

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("restaurants")
+@RequestMapping("api/restaurants")
 public class RestaurantsController {
     @Autowired
     private IRestaurantService iRestaurantService;

@@ -31,6 +31,12 @@ public class OrderService implements IOrderService {
     }
 
     @Override
+    public Page<Orders> findAllByNameContaining(Pageable pageable, String name) {
+//        return ordersRepository.findAllByNameContaining(pageable,"%" + name + "%");
+        return null;
+    }
+
+    @Override
     public void removeById(Long id) {
         ordersRepository.deleteById(id);
     }
