@@ -13,6 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin("*")
 @RequestMapping("api/orderdetail")
@@ -21,8 +23,8 @@ public class OrderDetailController {
     private IOrderDetailService iOrderDetailService;
 
     @GetMapping
-    private ResponseEntity<Page<OrderDetail>> display(@PageableDefault(value = 5) Pageable pageable) {
-        return new ResponseEntity<>(iOrderDetailService.findAll(pageable), HttpStatus.OK);
+    private ResponseEntity<List<OrderDetail>> display() {
+        return new ResponseEntity<>(iOrderDetailService.findAll(), HttpStatus.OK);
     }
 
     @PostMapping

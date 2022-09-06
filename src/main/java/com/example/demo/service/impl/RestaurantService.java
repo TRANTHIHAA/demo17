@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -15,9 +16,14 @@ public class RestaurantService implements IRestaurantService {
 
     @Autowired
     private IRestaurantRepository restaurantRepository;
+//    @Override
+//    public Page<Restaurants> findAll(Pageable pageable) {
+//        return restaurantRepository.findAll(pageable);
+//    }
+
     @Override
-    public Page<Restaurants> findAll(Pageable pageable) {
-        return restaurantRepository.findAll(pageable);
+    public List<Restaurants> findAll() {
+        return restaurantRepository.findAll();
     }
 
     @Override

@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.regex.Pattern;
 
@@ -16,9 +17,14 @@ public class UserService implements IUserService {
     @Autowired
     private IUserRepository userRepository;
 
+//    @Override
+//    public Page<Users> findAll(Pageable pageable) {
+//        return userRepository.findAll(pageable);
+//    }
+
     @Override
-    public Page<Users> findAll(Pageable pageable) {
-        return userRepository.findAll(pageable);
+    public List<Users> findAll() {
+        return userRepository.findAll();
     }
 
     @Override

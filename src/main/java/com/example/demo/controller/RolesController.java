@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin("*")
 @RequestMapping("api/roles")
@@ -20,8 +22,8 @@ public class RolesController {
     private IRoleService iRoleService;
 
     @GetMapping
-    private ResponseEntity<Page<Roles>> display(@PageableDefault(value = 5) Pageable pageable) {
-        return new ResponseEntity<>(iRoleService.findAll(pageable), HttpStatus.OK);
+    private ResponseEntity<List<Roles>> display() {
+        return new ResponseEntity<>(iRoleService.findAll(), HttpStatus.OK);
     }
 
     @PostMapping

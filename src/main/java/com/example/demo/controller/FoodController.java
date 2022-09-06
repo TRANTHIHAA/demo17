@@ -29,9 +29,13 @@ public class FoodController {
     private String fileUpload;
 
     @GetMapping
-    private ResponseEntity<Page<Foods>> display(@PageableDefault(value = 5) Pageable pageable){
-        return new ResponseEntity<>(iFoodService.findAll(pageable), HttpStatus.OK);
+    private ResponseEntity<List<Foods>> display(){
+        return new ResponseEntity<>(iFoodService.findAll(), HttpStatus.OK);
     }
+//    @GetMapping
+//    private ResponseEntity<Page<Foods>> display(@PageableDefault(value = 5) Pageable pageable){
+//        return new ResponseEntity<>(iFoodService.findAll(pageable), HttpStatus.OK);
+//    }
 
 //    @PostMapping
 //    public ResponseEntity<Product> createProduct(@RequestBody Product product, @RequestPart("file") MultipartFile image) throws IOException {
@@ -48,25 +52,6 @@ public class FoodController {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-
-//    @PutMapping
-//    private ResponseEntity<Product> update(@RequestBody Product product) {
-//        Optional<Product> optionalProduct = iProductService.findById(product.getId());
-//        if (optionalProduct.isPresent()) {
-//            return new ResponseEntity<>(iProductService.save(product), HttpStatus.OK);
-//        }
-//        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//    }
-//    @PutMapping
-//    private ResponseEntity<Product> update(@RequestPart("product") Product product,@RequestPart("file") MultipartFile image)throws IOException  {
-//        product.setUrlImage(image.getOriginalFilename());
-//        try {
-//            FileCopyUtils.copy(image.getBytes(), new File(fileUpload + image.getOriginalFilename()));
-//        } catch (IOException ex) {
-//            System.err.println("Error");
-//        }
-//        return new ResponseEntity<>(iProductService.save(product), HttpStatus.CREATED);
-//    }
 
     @DeleteMapping("/{id}")
     private ResponseEntity<Foods> delete(@PathVariable("id") Long id) {
@@ -95,7 +80,7 @@ public class FoodController {
         return new ResponseEntity<>(iFoodService.save(foods), HttpStatus.CREATED);
     }
     @PutMapping("/{id}")
-    private ResponseEntity<Foods> update(@RequestPart("product") Foods foods
+    private ResponseEntity<Foods> update(@RequestPart("food") Foods foods
             , @RequestPart("file") MultipartFile image) throws IOException {
         foods.setImageUrl(image.getOriginalFilename());
         try {

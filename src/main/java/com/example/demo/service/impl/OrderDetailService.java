@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -15,9 +16,14 @@ public class OrderDetailService implements IOrderDetailService {
     @Autowired
     private IOrderDetailRepository orderDetailRepository;
 
+//    @Override
+//    public Page<OrderDetail> findAll(Pageable pageable) {
+//        return orderDetailRepository.findAll(pageable);
+//    }
+
     @Override
-    public Page<OrderDetail> findAll(Pageable pageable) {
-        return orderDetailRepository.findAll(pageable);
+    public List<OrderDetail> findAll() {
+        return orderDetailRepository.findAll();
     }
 
     @Override

@@ -20,8 +20,8 @@ public class UserController {
     private IUserService iUserService;
 
     @GetMapping
-    private ResponseEntity<Page<Users>> display(@PageableDefault(value = 5) Pageable pageable){
-        return new ResponseEntity<>(iUserService.findAll(pageable), HttpStatus.OK);
+    private ResponseEntity<List<Users>> display(){
+        return new ResponseEntity<>(iUserService.findAll(), HttpStatus.OK);
     }@PostMapping
     private ResponseEntity<Users> create(@RequestBody Users user){
         return new ResponseEntity<>(iUserService.save(user), HttpStatus.CREATED);
