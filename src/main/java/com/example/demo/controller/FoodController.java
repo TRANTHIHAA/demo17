@@ -75,7 +75,7 @@ public class FoodController {
         return new ResponseEntity<>(iFoodService.findFoodByCategoryContaining(name, pageable), HttpStatus.OK);
     }
 
- @GetMapping("/search_ategory")
+ @GetMapping("/search_category")
     public ResponseEntity<Iterable<Foods>> findAllByCategory(@RequestParam("id") Long id,@PageableDefault(value = 5) Pageable pageable) {
         Optional<Category> category = iCategoryService.findById(id);
         return new ResponseEntity<>(iFoodService.findAllByCategory(category.get(), pageable), HttpStatus.OK);
