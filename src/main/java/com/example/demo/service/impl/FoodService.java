@@ -1,5 +1,6 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.model.Category;
 import com.example.demo.model.Foods;
 import com.example.demo.repository.IFoodRepository;
 import com.example.demo.service.IFoodService;
@@ -43,5 +44,17 @@ public class FoodService implements IFoodService {
     @Override
     public Page<Foods> findAllByNameContaining(Pageable pageable, String name) {
         return foodRepository.findAllByNameContaining(pageable,"%" + name + "%");
+    }
+
+    @Override
+    public Page<Foods> findFoodByCategoryContaining(String name, Pageable pageable) {
+        return foodRepository.findFoodByCategoryContaining("%" + name + "%", pageable);
+    }
+
+
+
+    @Override
+    public Page<Foods> findAllByCategory(Category category, Pageable pageable) {
+        return foodRepository.findAllByCategory(category,pageable);
     }
 }

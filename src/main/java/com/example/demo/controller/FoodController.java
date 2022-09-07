@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Category;
 import com.example.demo.model.Foods;
+import com.example.demo.service.ICategoryService;
 import com.example.demo.service.IFoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,6 +26,8 @@ import java.util.Optional;
 public class FoodController {
     @Autowired
     private IFoodService iFoodService;
+    @Autowired
+    private ICategoryService iCategoryService;
     @Value("D:\\Clone Gif\\CaseStudy\\Module4\\demo17\\src\\main\\resources\\static\\image\\")
     private String fileUpload;
 
@@ -67,9 +70,23 @@ public class FoodController {
         return new ResponseEntity<>(iFoodService.findAllByNameContaining(pageable, name), HttpStatus.OK);
     }
 
+ @GetMapping("/search-category")
+    public ResponseEntity<Iterable<Foods>> findFoodByCategoryContaining(@RequestParam("name") String name,@PageableDefault(value = 5) Pageable pageable) {
+        return new ResponseEntity<>(iFoodService.findFoodByCategoryContaining(name, pageable), HttpStatus.OK);
+    }
+
+ @GetMapping("/search_ategory")
+    public ResponseEntity<Iterable<Foods>> findAllByCategory(@RequestParam("id") Long id,@PageableDefault(value = 5) Pageable pageable) {
+        Optional<Category> category = iCategoryService.findById(id);
+        return new ResponseEntity<>(iFoodService.findAllByCategory(category.get(), pageable), HttpStatus.OK);
+    }
+
+
+
+
 
     @PostMapping
-    private ResponseEntity<Foods> setFileUpload(@RequestPart("product") Foods foods
+    private ResponseEntity<Foods> setFileUpload(@RequestPart("food") Foods foods
             , @RequestPart("file") MultipartFile image) throws IOException {
         foods.setImageUrl(image.getOriginalFilename());
         try {

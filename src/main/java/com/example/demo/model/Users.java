@@ -36,8 +36,6 @@ public class Users {
      private String email;
 
     private String phone;
-    @OneToOne
-    private Restaurants restaurant;
 
 
     @ManyToMany(targetEntity = Roles.class,fetch = FetchType.EAGER)
